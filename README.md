@@ -1,2 +1,3 @@
-# hmmvle
-HMMVLE: Hidden Markov Model VaLidation and Evaluation
+# HMMVLE
+
+HMMVLE (pronounced as "humble" /ˈhʌmbəl/) is a toolkit for the creation, validation and evalution of Hidden Markov Models (HMMs).
