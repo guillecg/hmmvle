@@ -3,6 +3,8 @@ from io import StringIO
 
 import pandas as pd
 
+from Bio import SeqIO
+
 import pyhmmer
 import pyfamsa
 
@@ -108,3 +110,19 @@ def get_hits(
         names=hmmer_colnames,
         sep=sep
     )
+
+
+def get_seqs(filepath: str) -> pd.DataFrame:
+
+    seqs = []
+
+    with open(filepath, mode="r") as handle:
+        for record in SeqIO.parse(handle, "fasta"):
+            seqs.append(
+                pd.Series({
+                    "seq_id": record.id,
+                    "seq": "".join(record.seq)
+                }).to_frame().T
+            )
+
+    return pd.concat(seqs)
