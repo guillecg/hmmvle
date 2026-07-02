@@ -9,7 +9,7 @@ def process_hyddb(filepath: str) -> pd.DataFrame:
 
     metadata_df = []
 
-    for seq in SeqIO.parse(seq_file, format="fasta"):
+    for seq in SeqIO.parse(filepath, format="fasta"):
 
         # Fix missing separator in ID
         seq_id = re.sub(
