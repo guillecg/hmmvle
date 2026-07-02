@@ -13,8 +13,8 @@ def process_hyddb(filepath: str) -> pd.DataFrame:
 
         # Fix missing separator in ID
         seq_id = re.sub(
-            pattern="\\.[0-9]+(_)",
-            repl="\\.[0-9]+(\\|)",
+            pattern=r"(\.[0-9]+)_",
+            repl=r"\1|",
             string=str(seq.id)
         )
 
