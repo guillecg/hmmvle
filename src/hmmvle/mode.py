@@ -16,8 +16,8 @@ def build_profiles_aligned(
 
     background = pyhmmer.plan7.Background(alphabet)
 
-    msa_tp = _build_msa(tp_df)
-    msa_fp = _build_msa(fp_df)
+    msa_tp = build_msa(tp_df)
+    msa_fp = build_msa(fp_df)
 
     # Get IDs for later filtering
     tp_ids = [seq.id for seq in msa_tp]
