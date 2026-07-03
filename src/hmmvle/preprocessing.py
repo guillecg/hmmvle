@@ -11,6 +11,14 @@ def _fix_missing_separator(seq_id: str) -> str:
     )
 
 
+def _fix_trailing_dash(seq: str) -> str:
+    return re.sub(
+        pattern="-$",
+        repl="",
+        string=str(seq)
+    )
+
+
 def process_hyddb(filepath: str) -> pd.DataFrame:
 
     metadata_df = []
@@ -21,11 +29,7 @@ def process_hyddb(filepath: str) -> pd.DataFrame:
         seq_id = _fix_missing_separator(seq.id)
 
         # Fix trailing "-"
-        seq_seq = re.sub(
-            pattern="-$",
-            repl="",
-            string=str(seq.seq)
-        )
+        seq_seq = _fix_trailing_dash(seq.seq)
 
         seq_id, seq_species, seq_group = seq_id.split("|")
         seq_class = re.findall(r"\[([A-Za-z]+)\]", seq_group)
