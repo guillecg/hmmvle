@@ -1,6 +1,8 @@
 import pandas as pd
 
 from Bio import SeqIO
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
 
 from hmmvle.preprocessing.common import (
     _fix_missing_separator,
@@ -8,17 +10,22 @@ from hmmvle.preprocessing.common import (
 )
 
 
+def fix_hyddb(filepath: str) -> None:
+    return [
+        SeqRecord(
+            id=_fix_missing_separator(seq.id),
+            seq=Seq(_fix_trailing_dash(seq.seq)),
+            description=""
+        )
+        for seq in SeqIO.parse(filepath, format="fasta")
+    ]
+
+
 def process_hyddb(filepath: str) -> pd.DataFrame:
 
     metadata_df = []
 
     for seq in SeqIO.parse(filepath, format="fasta"):
-
-        # Fix missing separator in ID
-        seq_id = _fix_missing_separator(seq.id)
-
-        # Fix trailing "-"
-        seq_seq = _fix_trailing_dash(seq.seq)
 
         seq_id, seq_species, seq_group = seq_id.split("|")
         seq_class = re.findall(r"\[([A-Za-z]+)\]", seq_group)
