@@ -47,7 +47,7 @@ def process_hyddb(filepath: str) -> pd.DataFrame:
                 "id": seq_id,
                 "species": seq_species,
                 "group": seq_group,
-                "seq": str(seq_seq)
+                "seq": str(seq.seq)
             }).to_frame().T
         )
 
