@@ -3,6 +3,14 @@ import re
 from Bio import SeqIO
 
 
+def _fix_missing_separator(seq_id: str) -> str:
+    return re.sub(
+        pattern=r"(\.[0-9]+)_",
+        repl=r"\1|",
+        string=str(seq_id)
+    )
+
+
 def process_hyddb(filepath: str) -> pd.DataFrame:
 
     metadata_df = []
@@ -10,11 +18,7 @@ def process_hyddb(filepath: str) -> pd.DataFrame:
     for seq in SeqIO.parse(filepath, format="fasta"):
 
         # Fix missing separator in ID
-        seq_id = re.sub(
-            pattern=r"(\.[0-9]+)_",
-            repl=r"\1|",
-            string=str(seq.id)
-        )
+        seq_id = _fix_missing_separator(seq.id)
 
         # Fix trailing "-"
         seq_seq = re.sub(
