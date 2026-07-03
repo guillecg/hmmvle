@@ -27,7 +27,7 @@ def process_hyddb(filepath: str) -> pd.DataFrame:
 
     for seq in SeqIO.parse(filepath, format="fasta"):
 
-        seq_id, seq_species, seq_group = seq_id.split("|")
+        seq_id, seq_species, seq_group = seq.id.split("|")
         seq_class = re.findall(r"\[([A-Za-z]+)\]", seq_group)
         seq_group = \
             seq_group.split("_Group_")[-1] \
