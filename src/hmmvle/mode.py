@@ -21,8 +21,8 @@ def build_profiles_aligned(
     msa_fp = build_msa(fp_df)
 
     # Get IDs for later filtering
-    tp_ids = [seq.id for seq in msa_tp]
-    fp_ids = [seq.id for seq in msa_fp]
+    tp_ids = [seq.id.decode() for seq in msa_tp]
+    fp_ids = [seq.id.decode() for seq in msa_fp]
 
     # Align both TP and FP MSAs
     aligner = pyfamsa.Aligner(
