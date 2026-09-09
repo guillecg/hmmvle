@@ -1,7 +1,6 @@
 import pandas as pd
 
 import pyhmmer
-from pyhmmer.easel import SequenceFile
 
 
 def search_single(
@@ -12,8 +11,15 @@ def search_single(
 
     background = pyhmmer.plan7.Background(alphabet)
     pipeline = pyhmmer.plan7.Pipeline(alphabet, background=background)
-    
-    with SequenceFile(seq_path, digital=True, alphabet=alphabet) as seq_file:
-        hits = pipeline.search_hmm(hmm, seq_file)
+
+    with pyhmmer.easel.SequenceFile(
+        seq_path,
+        digital=True,
+        alphabet=alphabet
+    ) as handle:
+        hits = pipeline.search_hmm(
+            query=hmm,
+            sequences=handle
+        )
 
     return hits
