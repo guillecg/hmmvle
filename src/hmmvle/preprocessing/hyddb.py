@@ -60,13 +60,23 @@ def process_hyddb(filepath: str) -> pd.DataFrame:
 def define_hits(
     row: pd.Series,
     hmm_thr: float,
-    hmm_group: str
+    hmm_group: str,
+    score_type: str = "seq"
 ) -> str:
+
+    assert score_type in ("seq", "domain"), "[ERROR] Unsupported score_type!"
+
+    score_mapping = {
+        "seq": "score_full_seq",
+        "domain": "score_best_dom"
+    }
+    score_col = score_mapping[score_type]
+
     # There are no false negatives because by definition the threshold includes
     # all the considered true positives (threshold is minimum among them)
-    if row["score_full_seq"] >= hmm_thr and row["group"] == hmm_group:
+    if row[score_col] >= hmm_thr and row["group"] == hmm_group:
         return "True positive"
-    elif row["score_full_seq"] >= hmm_thr and row["group"] != hmm_group:
+    elif row[score_col] >= hmm_thr and row["group"] != hmm_group:
         return "False positive"
     else:
         return "True negative"
