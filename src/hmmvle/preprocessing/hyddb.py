@@ -70,3 +70,19 @@ def define_hits(
         return "False positive"
     else:
         return "True negative"
+
+
+def get_seqs(filepath: str) -> pd.DataFrame:
+
+    seqs = []
+
+    with open(filepath, mode="r") as handle:
+        for record in SeqIO.parse(handle, "fasta"):
+            seqs.append(
+                pd.Series({
+                    "seq_id": record.id,
+                    "seq": "".join(record.seq)
+                }).to_frame().T
+            )
+
+    return pd.concat(seqs)

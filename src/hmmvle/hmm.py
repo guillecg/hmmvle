@@ -49,19 +49,3 @@ def build_profile(
     hmm, _, _ = builder.build_msa(msa_text.digitize(alphabet), background)
 
     return hmm
-
-
-def get_seqs(filepath: str) -> pd.DataFrame:
-
-    seqs = []
-
-    with open(filepath, mode="r") as handle:
-        for record in SeqIO.parse(handle, "fasta"):
-            seqs.append(
-                pd.Series({
-                    "seq_id": record.id,
-                    "seq": "".join(record.seq)
-                }).to_frame().T
-            )
-
-    return pd.concat(seqs)
