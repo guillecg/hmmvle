@@ -23,7 +23,7 @@ def build_msa(df: pd.DataFrame) -> pyfamsa.Alignment:
     return msa
 
 
-def build_profiles(
+def build_profile(
     df: pd.DataFrame,
     name: str,
     alphabet: pyhmmer.easel.Alphabet
