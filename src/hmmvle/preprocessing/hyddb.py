@@ -6,7 +6,7 @@ from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 
-from hmmvle.preprocessing.common import (
+from hmmvle.preprocessing.utils import (
     _fix_missing_separator,
     _fix_trailing_dash,
     _fix_missing_aa
