@@ -174,6 +174,6 @@ def hmm_mode(
                 hmm_tp.match_emissions[i, k] = final_p[k]
 
             # Validate HMM profile
-            hmm_tp.validate(tolerance=0.0001)
+            hmm_tp.validate(tolerance=1e-4)
 
     return hmm_tp
