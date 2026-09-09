@@ -61,13 +61,13 @@ def define_hits(
     row: pd.Series,
     hmm_thr: float,
     hmm_group: str,
-    score_type: str = "seq"
+    score_type: str = "full"
 ) -> str:
 
-    assert score_type in ("seq", "domain"), "[ERROR] Unsupported score_type!"
+    assert score_type in ("full", "domain"), "[ERROR] Unsupported score_type!"
 
     score_mapping = {
-        "seq": "score_full_seq",
+        "full": "score_full_seq",
         "domain": "score_best_dom"
     }
     score_col = score_mapping[score_type]
