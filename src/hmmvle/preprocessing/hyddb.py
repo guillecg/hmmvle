@@ -8,7 +8,8 @@ from Bio.SeqRecord import SeqRecord
 
 from hmmvle.preprocessing.common import (
     _fix_missing_separator,
-    _fix_trailing_dash
+    _fix_trailing_dash,
+    _fix_missing_aa
 )
 
 
@@ -16,7 +17,9 @@ def fix_hyddb(filepath: str) -> None:
     return [
         SeqRecord(
             id=_fix_missing_separator(seq.id),
-            seq=Seq(_fix_trailing_dash(seq.seq)),
+            seq=Seq(
+                _fix_missing_aa(_fix_trailing_dash(seq.seq))
+            ),
             description=""
         )
         for seq in SeqIO.parse(filepath, format="fasta")

@@ -15,3 +15,9 @@ def _fix_trailing_dash(seq: str) -> str:
         repl="",
         string=str(seq)
     )
+
+
+def _fix_missing_aa(seq: str) -> str:
+    # Selenocysteine (U) is not present in FAMSA's alphabet, treat it as an
+    # unknown amino acid (X)
+    return seq.replace("U", "X")
