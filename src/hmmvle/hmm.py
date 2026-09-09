@@ -1,9 +1,4 @@
-import re
-from io import StringIO
-
 import pandas as pd
-
-from Bio import SeqIO
 
 import pyhmmer
 import pyfamsa
