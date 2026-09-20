@@ -102,6 +102,8 @@ def hmm_mode(
     optimising the discrimination threshold and modifying emission 
     probabilities with negative training sequences. BMC Bioinformatics, 8(1), 
     104. https://doi.org/10.1186/1471-2105-8-104
+
+    * Sinha, S., & Lynn, A. (2014). HMM-ModE: Implementation, benchmarking and validation with HMMER3. BMC Research Notes, 7(1), 483. https://doi.org/10.1186/1756-0500-7-483
     """
 
     assert hmm_tp.insert_emissions.shape == hmm_fp.insert_emissions.shape, \
