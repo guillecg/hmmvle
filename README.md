@@ -25,6 +25,14 @@ An example Jupyter notebook can be found in the [examples folder](examples/HMMVL
 
 
 
+## Citation
+
+The HMMVLE package can be cited as:
+
+Climent Gargallo, G. (2026). HMMVLE: Hidden markov model VaLidation and Enhancement (Version 0.0.1) [Computer software]. https://github.com/guillecg/hmmvle
+
+
+
 ## References
 
 Srivastava, P. K., Desai, D. K., Nandi, S., & Lynn, A. M. (2007). HMM-ModE - Improved classification using profile hidden Markov models by optimising the discrimination threshold and modifying emission probabilities with negative training sequences. BMC Bioinformatics, 8(1), 104. https://doi.org/10.1186/1471-2105-8-104
