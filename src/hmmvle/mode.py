@@ -95,7 +95,8 @@ def hmm_mode(
     alphabet: pyhmmer.easel.Alphabet
 ) -> pyhmmer.plan7.HMM:
     """
-    Algorithm adapted from:
+    HMM-ModE algorithm adapted to work in Python from the following articles,
+    both with CC-BY-2.0 licenses:
 
     * Srivastava, P. K., Desai, D. K., Nandi, S., & Lynn, A. M. (2007). 
     HMM-ModE - Improved classification using profile hidden Markov models by 
